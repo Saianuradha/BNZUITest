@@ -8,9 +8,7 @@ public class HomePage {
 	@FindBy(xpath = "//button[@class='Button Button--transparent js-main-menu-btn MenuButton']")
 	private WebElement bnzMenuButton;
 	
-	
-	public void menuOptions(){
-		
+	public void menuOptions(){	
 	bnzMenuButton.click();
 	}
 	
@@ -18,7 +16,7 @@ public class HomePage {
 	private WebElement payeeOption;
 	
 	public void payees() {
-		payeeOption.click();	
+	payeeOption.click();	
 		
 	}
 }

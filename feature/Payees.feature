@@ -8,6 +8,10 @@ Background:
 
 Scenario: Verify user is navigated to Payee Page from navigation Menu
     Then Payees page is loaded
+    
+    
+Scenario: Verify user can add new payee in the payeepage
+
 #
   #@tag2
   #Scenario Outline: Title of your scenario outline

@@ -40,7 +40,8 @@ public class DriverUtil {
 		if (System.getProperty("os.name").contains("Win")) {
 			System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
 			
-		} else if (System.getProperty("os.name").contains("Mac")) {
+		} 
+		else if (System.getProperty("os.name").contains("Mac")) {
 		System.setProperty("webdriver.chrome.driver", "drivers//chromedriver");
 		}
 	}
@@ -55,6 +56,9 @@ public class DriverUtil {
 	}
 	public PayeesPage getPayeesPage() {
 		return payeesPage;
+	}
+	public void verifyPageTitle() {
+		driver.getTitle();
 	}
 //	public SignInPage getSignInPage() {
 //		return signInPage;
