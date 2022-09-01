@@ -39,7 +39,10 @@ public class DriverUtil {
 	private void initSystemProperty() {
 		if (System.getProperty("os.name").contains("Win")) {
 			System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
-		} 
+			
+		} else if (System.getProperty("os.name").contains("Mac")) {
+		System.setProperty("webdriver.chrome.driver", "drivers//chromedriver");
+		}
 	}
 	public void exit(){
 		driver.quit();
