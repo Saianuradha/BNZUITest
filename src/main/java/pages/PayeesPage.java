@@ -4,10 +4,18 @@ package pages;
 
 import static org.testng.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+
+import utils.Utilities;
 
 public class PayeesPage {
 	@FindBy(xpath = "//span[text()='Payees']")
@@ -58,6 +66,35 @@ public class PayeesPage {
 	}
 	public void assertErrorMessageGone() {
 		Assert.assertEquals(false, errorMessage.isDisplayed());
+	}
+	@FindBy(xpath = "//ul[@class='List List--border']")
+	private WebElement ulWebElement;
+	public void isPayeeSort(String order) {
+		ArrayList<String> obtainedList = new ArrayList<>();
+
+        List<WebElement> elementList= ulWebElement.findElements(By.xpath("//span[@class='js-payee-name']"));
+        for(WebElement ele:elementList){
+            obtainedList.add(ele.getText().toString());
+        }
+        
+        if(order.equals("ascending")){
+        ArrayList<String> tempList = new ArrayList<String>(obtainedList);
+        
+        Collections.sort(tempList);
+        
+        boolean isSortedInAscending = tempList.equals(obtainedList);
+        System.out.println(order+"::"+isSortedInAscending);
+        assertTrue((isSortedInAscending == true), "Payee List is not Sorted in Ascending Order");
+        }
+        else {
+        	 ArrayList<String> tempList = new ArrayList<String>(obtainedList);
+             
+             Collections.sort(tempList, Collections.reverseOrder());
+             
+             boolean isSortedInDescending = tempList.equals(obtainedList);
+             System.out.println(order+"::"+isSortedInDescending);
+             assertTrue((isSortedInDescending == true), "Payee List is not Sorted in Descending Order");
+        }
 	}
 	
 	}

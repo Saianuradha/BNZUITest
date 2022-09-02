@@ -57,8 +57,17 @@ public class PayeeSteps extends DriverUtil{
 	}
 	
 	@Then("I verify errors are gone")
-	public void i_verify_errors_are_gone() {
-		
+	public void i_verify_errors_are_gone() {	
+	}
+	
+	@Then("I see the list is sorted in {string} order")
+	public void i_see_the_list_is_sorted_in_order(String order) {
+		getPayeesPage().isPayeeSort(order);
+	}
+	@Then("I click on the Name header")
+	public void i_click_on_the_name_header() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
 	}
 //	@After
 //	public void tearDown(){
