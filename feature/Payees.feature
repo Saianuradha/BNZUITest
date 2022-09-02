@@ -1,5 +1,3 @@
-
-@tag
 Feature: Test Scenarios for Payee
 Background: 
  Given I launch bnz home page
@@ -9,17 +7,34 @@ Background:
 Scenario: Verify user is navigated to Payee Page from navigation Menu
     Then Payees page is loaded
     
-    
-Scenario: Verify user can add new payee in the payeepage
+   
+Scenario Outline: Verify user can add new payee in the payeepage
+When I click add payee
+And I enter payee details < name > & < account > 
+And I click on Add button
+Then I see "Payee is Added" message.
 
-#
-  #@tag2
-  #Scenario Outline: Title of your scenario outline
-    #Given I want to write a step with <name>
-    #When I check for the <value> in step
-    #Then I verify the <status> in step
-#
-    #Examples: 
-      #| name  | value | status  |
-      #| name1 |     5 | success |
-      #| name2 |     7 | Fail    |
+Examples: 
+|name|account| 
+|Anu|01-1234-1231234-000|
+
+@run
+Scenario Outline: Verify Payee name is a mandatory field
+When I click add payee
+And I click on Add button
+And I see the validation message
+And I enter payee details < name > & < account > 
+Then I verify errors are gone 
+
+Examples: 
+|name|account|
+|Anu|0112341231234000| 
+
+
+
+
+
+
+
+     
+      

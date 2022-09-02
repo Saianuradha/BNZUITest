@@ -1,9 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: runner.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 10.24 sec <<< FAILURE!
-runScenario(runner.TestRunner)  Time elapsed: 8.403 sec  <<< FAILURE!
-io.cucumber.java.PendingException: TODO: implement me
-	at steps.PayeeSteps.payees_page_is_loaded(PayeeSteps.java:29)
-	at ✽.Payees page is loaded(file:///C:/TestingProjects/DatacomNZ/feature/Payees.feature:10)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.628 sec
