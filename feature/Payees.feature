@@ -37,7 +37,7 @@ And I enter payee details < name > & < account >
 And I click on Add button
 #Then I see "Payee is Added" message
 Then I see the list is sorted in "ascending" order
-#And I click on the Name header
+And I click on the Name header
 Then I see the list is sorted in "descending" order
 
 

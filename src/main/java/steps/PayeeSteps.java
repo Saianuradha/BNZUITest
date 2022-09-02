@@ -66,8 +66,7 @@ public class PayeeSteps extends DriverUtil{
 	}
 	@Then("I click on the Name header")
 	public void i_click_on_the_name_header() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    getPayeesPage().clickNameHeader();
 	}
 //	@After
 //	public void tearDown(){
