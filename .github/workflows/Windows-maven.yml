@@ -22,9 +22,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - uses: browser-actions/setup-chrome@105
+    - uses: browser-actions/setup-chrome@105.0.5195.54
       with:
-        chrome-version: 105
+        chrome-version: 105.0.5195.54
     - run: chrome --version
     
     - name: Build with Maven
