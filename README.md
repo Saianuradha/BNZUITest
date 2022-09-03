@@ -1,7 +1,8 @@
 # BNZUITest
 
 ## Description
-This project **
+This project is an UI Automation testing project developed with Selenium, BDD-Cucumber framework. I used TestNG as Assertion tool, Maven for biuld purpose.
+This project is integrated with Github Actions CI pipeline
 ## Steps to run tests in Mac OS.
 1. Import code from git repository url from eclipse/other IDE.
 2. If you find any Build errors, then right click on `Project Root Folder->Maven->Update Project`
