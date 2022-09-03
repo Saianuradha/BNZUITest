@@ -1,5 +1,7 @@
 # BNZUITest
 
+## Description
+This project **
 ## Steps to run tests in Mac OS.
 1. Import code from git repository url from eclipse/other IDE.
 2. If you find any Build errors, then right click on `Project Root Folder->Maven->Update Project`
