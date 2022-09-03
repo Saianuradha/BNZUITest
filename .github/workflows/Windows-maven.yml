@@ -23,8 +23,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - uses: browser-actions/setup-chrome@latest
-     
+      with:
+        chrome-version: '105.0'
     - run: chrome --version
-    
+     
     - name: Build with Maven
       run: mvn -B package --file pom.xml
