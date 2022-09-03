@@ -6,7 +6,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
 public class Utilities {
+	
+	/**
+	 * @param key: config key
+	 * @return String, value of the key associated in properties file
+	 */
 	public static String getConfigValue(String key){
 		Properties config = new Properties();
 		String fileName = "";
@@ -25,21 +33,11 @@ public class Utilities {
 		return config.getProperty(key);
 	}
 	
+	/**
+	 * @param listOfStrings : String List to check sorted or not
+	 * @return Boolean, True if it is sorted, False if it is not sorted
+	 */
 	public static boolean isSorted(List<String> listOfStrings) {
-//	    if (listOfStrings.size() == 0 || listOfStrings.size() == 1) {
-//	        return true;
-//	    }
-//
-//	    Iterator<String> iter = listOfStrings.iterator();
-//	    String current, previous = iter.next();
-//	    while (iter.hasNext()) {
-//	        current = iter.next();
-//	        if (previous.compareTo(current) > 0) {
-//	            return false;
-//	        }
-//	        previous = current;
-//	    }
-//	    return true;
 	    
 	    boolean isSorted=true;
         for(int i=1;i < listOfStrings.size();i++){
@@ -48,7 +46,7 @@ public class Utilities {
                 break;
             }
         }
-        return isSorted;
-	    
+        return isSorted;  
 	}
+	
 }

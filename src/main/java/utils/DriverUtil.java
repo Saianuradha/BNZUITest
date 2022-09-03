@@ -1,4 +1,6 @@
 package utils;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -7,27 +9,34 @@ import org.openqa.selenium.support.PageFactory;
 
 import pages.HomePage;
 import pages.PayeesPage;
+import pages.PaymentsPage;
 
 public class DriverUtil {
 	private WebDriver driver;
 	private HomePage homePage;
 	private PayeesPage payeesPage;
+	private PaymentsPage paymentsPage;
 
-	public WebDriver setupDriver(){
+	public WebDriver setupDriver() {
 		initSystemProperty();
 		initDriver(Utilities.getConfigValue("browser"));
-		
+
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Long.parseLong(Utilities.getConfigValue("loadingTime")), TimeUnit.SECONDS);
-		
+		// TODO remove this line
+//		driver.manage().timeouts().implicitlyWait(Long.parseLong(Utilities.getConfigValue("loadingTime")),
+//				TimeUnit.SECONDS);
+		driver.manage().timeouts()
+				.implicitlyWait(Duration.ofSeconds(Long.parseLong(Utilities.getConfigValue("loadingTime"))));
+
 		homePage = PageFactory.initElements(driver, HomePage.class);
 		payeesPage = PageFactory.initElements(driver, PayeesPage.class);
-	//	signInPage = PageFactory.initElements(driver,  SignInPage.class);
+		paymentsPage = PageFactory.initElements(driver, PaymentsPage.class);
 		return driver;
 	}
-	private void initDriver(String browserType){
-		if(driver == null){
-			switch(browserType){
+
+	private void initDriver(String browserType) {
+		if (driver == null) {
+			switch (browserType) {
 			case "chrome":
 				driver = new ChromeDriver();
 				break;
@@ -36,32 +45,42 @@ public class DriverUtil {
 			}
 		}
 	}
+
 	private void initSystemProperty() {
 		if (System.getProperty("os.name").contains("Win")) {
 			System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
-			
-		} 
-		else if (System.getProperty("os.name").contains("Mac")) {
-		System.setProperty("webdriver.chrome.driver", "drivers//chromedriver");
+
+		} else if (System.getProperty("os.name").contains("Mac")) {
+			System.setProperty("webdriver.chrome.driver", "drivers//chromedriver");
 		}
 	}
-	public void exit(){
+
+	public void exit() {
 		driver.quit();
 	}
-	public void launchHomePage(){
+
+	public WebDriver getDriver() {
+		return driver;
+	}
+
+	public void launchHomePage() {
 		driver.get(Utilities.getConfigValue("bnzappUrl"));
 	}
+
 	public HomePage getHomePage() {
 		return homePage;
 	}
+
 	public PayeesPage getPayeesPage() {
 		return payeesPage;
 	}
+
 	public void verifyPageTitle() {
 		driver.getTitle();
 	}
-//	public SignInPage getSignInPage() {
-//		return signInPage;
-	}
-	
 
+	public PaymentsPage getPaymentsPage() {
+		return paymentsPage;
+	}
+
+}
