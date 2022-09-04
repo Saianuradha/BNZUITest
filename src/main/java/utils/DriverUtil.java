@@ -10,57 +10,14 @@ import org.openqa.selenium.support.PageFactory;
 import pages.HomePage;
 import pages.PayeesPage;
 import pages.PaymentsPage;
+import steps.BrowserConfig;
 
 public class DriverUtil {
-	private WebDriver driver;
+	public static WebDriver driver = BrowserConfig.driver;
 	private HomePage homePage;
 	private PayeesPage payeesPage;
 	private PaymentsPage paymentsPage;
 
-	public WebDriver setupDriver() {
-		initSystemProperty();
-		initDriver(Utilities.getConfigValue("browser"));
-
-		driver.manage().window().maximize();
-		driver.manage().timeouts()
-				.implicitlyWait(Duration.ofSeconds(Long.parseLong(Utilities.getConfigValue("loadingTime"))));
-
-		homePage = PageFactory.initElements(driver, HomePage.class);
-		payeesPage = PageFactory.initElements(driver, PayeesPage.class);
-		paymentsPage = PageFactory.initElements(driver, PaymentsPage.class);
-		return driver;
-	}
-
-	private void initDriver(String browserType) {
-		if (driver == null) {
-			switch (browserType) {
-			case "chrome":
-				driver = new ChromeDriver();
-				break;
-			default:
-				driver = new ChromeDriver();
-			}
-		}
-	}
-
-	private void initSystemProperty() {
-		if (System.getProperty("os.name").contains("Win")) {
-			System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
-
-		} else if (System.getProperty("os.name").contains("Mac")) {
-			System.setProperty("webdriver.chrome.driver", "drivers//chromedriver");
-		}
-	}
-
-	public void exit() {
-		if (driver != null) {
-			driver.quit();
-		}
-	}
-
-	public WebDriver getDriver() {
-		return driver;
-	}
 
 	public void launchHomePage() {
 		driver.get(Utilities.getConfigValue("bnzappUrl"));

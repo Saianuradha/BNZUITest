@@ -19,8 +19,8 @@
 Feature: Test Scenarios for Payment
 
   Background: 
-    Given I launch bnz home page second
-    When I click on MenuButton second
+    Given I launch bnz home page
+    When I click on MenuButton
 
   Scenario Outline: Navigate to Payments Page
     When I Navigate to PaymentsPage

@@ -2,6 +2,7 @@ package pages;
 
 import static org.testng.Assert.assertTrue;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,9 +13,21 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import utils.Utilities;
+
 public class PayeesPage {
+	private WebDriver driver;
+
+	public PayeesPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
 	@FindBy(xpath = "//span[text()='Payees']")
 	private WebElement payeeOption;
 
@@ -50,30 +63,26 @@ public class PayeesPage {
 
 	@FindBy(xpath = "//ul[@class='List List--border']")
 	private WebElement ulWebElement;
-	
+
 	@FindBy(xpath = "//span[text()='Payee added']")
 	private WebElement payeeAddedSuccessMessage;
 
-	public void verifyPageTitle(WebDriver driver) {
-		 JavascriptExecutor j = (JavascriptExecutor) driver;
-	      j.executeScript("return document.readyState")
-	      .toString().equals("complete");
-	      String currentUrl = driver.getCurrentUrl();
-	      String payeeUrlExpected = "https://www.demo.bnz.co.nz/client/payees";
-	     
-	      assertTrue(currentUrl.equals(payeeUrlExpected), "Payee page did not load");
+	public void verifyPageTitle() {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("return document.readyState").toString().equals("complete");
+		String currentUrl = driver.getCurrentUrl();
+		String payeeUrlExpected = "https://www.demo.bnz.co.nz/client/payees";
+
+		assertTrue(currentUrl.equals(payeeUrlExpected), "Payee page did not load");
 	}
-	
+
 	public void payeeAdded() {
-		try {
-			// TODO remove thread.sleep
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Payee added']")));
+
 		assertTrue(payeeAddedSuccessMessage.isDisplayed() == true, "Payee added success message is not displayed");
 	}
-	
+
 	public void addPayee() {
 		addPayee.click();
 	}

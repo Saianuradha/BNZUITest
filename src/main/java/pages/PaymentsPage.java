@@ -2,13 +2,26 @@ package pages;
 
 import static org.testng.Assert.assertTrue;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PaymentsPage {
+	
+private WebDriver driver;
+	
+	public PaymentsPage(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	
 	@FindBy(xpath = "//button[@data-monitoring-label='Transfer Form From Chooser']")
 	private WebElement fromChooseAccount;
 	@FindBy(xpath = "//button[@data-monitoring-label='Transfer Form To Chooser']")
@@ -33,12 +46,12 @@ public class PaymentsPage {
 	private WebElement transferSuccessMessage;
 	
 
-	public void selectFromAccount(WebDriver driver) {
+	public void selectFromAccount() {
 		fromChooseAccount.click();
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", fromAccountType);
 	}
 
-	public void selectToAccount(WebDriver driver) {
+	public void selectToAccount() {
 		toChooseAccount.click();
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", accountTab);
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", toAccountType);
@@ -53,13 +66,10 @@ public class PaymentsPage {
 	}
 
 	public void transferSuccessMessageDisplayed() {
-		try {
-			// TODO remove thread.sleep
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		assertTrue(transferSuccessMessage.isDisplayed() == true, "Success message is not displayed");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Transfer successful']")));
+		
+		assertTrue(transferSuccessMessage.isDisplayed() == true, "Success message is not displayed");	
 	}
 	
 	public String getFromAccountValue() {
