@@ -13,6 +13,12 @@ public class HomePage {
 
 	@FindBy(xpath = "//span[text()='Pay or transfer']")
 	private WebElement paymentOption;
+	
+	@FindBy(xpath = "//div[@id='account-ACC-1']/div[2]/span[3]")
+	private WebElement everyDayAccountBalance;
+	
+	@FindBy(xpath = "//div[@id='account-ACC-5']/div[2]/span[3]")
+	private WebElement billsAccountBalance;
 
 	public void menuOptions() {
 		bnzMenuButton.click();
@@ -24,5 +30,17 @@ public class HomePage {
 
 	public void payments() {
 		paymentOption.click();
+	}
+	
+	public String getEveryDayAccountCurrentValue() {
+		String value = everyDayAccountBalance.getText();
+		value = value.replace(",", "");
+		return value;
+	}
+	
+	public String getBillsAccountCurrentValue() {
+		String value = billsAccountBalance.getText();
+		value = value.replace(",", "");
+		return value;
 	}
 }

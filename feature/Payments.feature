@@ -35,6 +35,6 @@ Feature: Test Scenarios for Payment
     Examples: 
       | From Account | To Account | value |
       | Everyday     | Bills      |   500 |
-      #| Everyday     | Bills      |   200 |
-      #| Everyday     | Bills      |   400 |
+      | Everyday     | Bills      |   200.50 |
+      | Everyday     | Bills      |   400 |
 

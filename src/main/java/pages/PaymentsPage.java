@@ -2,6 +2,7 @@ package pages;
 
 import static org.testng.Assert.assertTrue;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +31,7 @@ public class PaymentsPage {
 
 	@FindBy(xpath = "//span[text()='Transfer successful']")
 	private WebElement transferSuccessMessage;
+	
 
 	public void selectFromAccount(WebDriver driver) {
 		fromChooseAccount.click();
@@ -58,6 +60,22 @@ public class PaymentsPage {
 			e.printStackTrace();
 		}
 		assertTrue(transferSuccessMessage.isDisplayed() == true, "Success message is not displayed");
+	}
+	
+	public String getFromAccountValue() {
+		String fullText = fromChooseAccount.findElement(By.xpath("(//p[contains(@class,'balance')])[1]")).getText();
+		fullText = fullText.substring(1);
+		int index = fullText.indexOf(" Avl.");
+		fullText = fullText.substring(0, index);
+		return fullText.replace(",", "");
+	}
+	
+	public String getToAccountValue() {
+		String fullText = toChooseAccount.findElement(By.xpath("(//p[contains(@class,'balance')])[2]")).getText();
+		fullText = fullText.substring(1);
+		int index = fullText.indexOf(" Avl.");
+		fullText = fullText.substring(0, index);
+		return fullText.replace(",", "");
 	}
 
 }
