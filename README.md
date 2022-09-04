@@ -1,4 +1,4 @@
-# BNZUITest
+# BNZUITest   [![Java CI with Maven](https://github.com/Saianuradha/BNZUITest/actions/workflows/Windows-maven.yml/badge.svg)](https://github.com/Saianuradha/BNZUITest/actions/workflows/Windows-maven.yml)
 
 ## Description
 This project is an UI Automation testing project developed with Selenium, BDD-Cucumber framework. I used TestNG as Assertion tool, Maven for build purpose.
