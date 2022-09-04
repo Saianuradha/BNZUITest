@@ -7,6 +7,7 @@ This project is integrated with Github Actions CI pipeline
 ## Steps to run tests in Windows/Mac.
 1. Import code from git repository url from eclipse/other IDE.
 2. If you find any Build errors, then right click on `Project Root Folder->Maven->Update Project`
+3. Right Click on the pom.xml->Run As->Maven Test.
 3. If you get chrome driver error, then you need to update your chrome to the latest version, today (01-09-2022) latest version is 105.xx., Open chrome->goto settings->about chrome->update chrome version to latest(105) and click on Relaunch button after installing latest chrome version.
 
 ## Troubleshoot in Mac OS.
