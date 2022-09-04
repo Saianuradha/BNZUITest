@@ -69,6 +69,8 @@ public class PayeeSteps {
 
 	@Then("I verify errors are gone")
 	public void i_verify_errors_are_gone() {
+		payeePage.clickOnAdd();
+		payeePage.payeeAdded();
 	}
 
 	@Then("I see the list is sorted in {string} order")
