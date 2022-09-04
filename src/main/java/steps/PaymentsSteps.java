@@ -22,18 +22,6 @@ public class PaymentsSteps {
 		paymentsPage = new PaymentsPage(driver);
 		homePage = new HomePage(driver);
 	}
-	
-
-//	@Given("I launch bnz home page second")
-//	public void i_launch_bnz_home_page_second() {
-//		launchHomePage();
-//
-//	}
-//
-//	@When("I click on MenuButton second")
-//	public void i_click_on_menu_button_second() {
-//		homePage.menuOptions();
-//	}
 
 	@When("I Navigate to PaymentsPage")
 	public void navigate_to_payments_page() {
