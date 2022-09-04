@@ -1,3 +1,5 @@
+#Author: saianuradha24@gmail.com
+
 Feature: Test Scenarios for Payee
 
   Background: 
@@ -5,6 +7,7 @@ Feature: Test Scenarios for Payee
     When I click on MenuButton
 
   Scenario: Verify user is navigated to Payee Page from navigation Menu
+    When I click on Payee option
     Then Payees page is loaded
 
   Scenario Outline: Verify user can add new payee in the payeepage
@@ -19,6 +22,7 @@ Feature: Test Scenarios for Payee
       | Anu  | 01-1234-1231234-000 |
 
   Scenario Outline: Verify Payee name is a mandatory field
+    When I click on Payee option
     When I click add payee
     And I click on Add button
     And I see the validation message
@@ -30,6 +34,7 @@ Feature: Test Scenarios for Payee
       | Anu  | 0112341231234000 |
 
   Scenario Outline: Verify that payees can be sorted by name
+    When I click on Payee option
     When I click add payee
     And I enter payee details < name > & < account >
     And I click on Add button
@@ -37,5 +42,3 @@ Feature: Test Scenarios for Payee
     Then I see the list is sorted in "ascending" order
     And I click on the Name header
     Then I see the list is sorted in "descending" order
-
-  Scenario Outline: Navigate to Payments page

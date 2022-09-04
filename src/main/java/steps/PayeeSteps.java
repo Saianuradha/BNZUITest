@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,7 +13,6 @@ public class PayeeSteps extends DriverUtil {
 	public void i_launch_bnz_home_page() {
 		setupDriver();
 		launchHomePage();
-
 	}
 
 	@When("I click on MenuButton")
@@ -27,7 +27,7 @@ public class PayeeSteps extends DriverUtil {
 
 	@Then("Payees page is loaded")
 	public void payees_page_is_loaded() {
-		getPayeesPage().verifyPageTitle();
+		getPayeesPage().verifyPageTitle(getDriver());
 	}
 
 	@When("I click add payee")
@@ -45,16 +45,10 @@ public class PayeeSteps extends DriverUtil {
 	public void i_click_on_add_button() {
 		getPayeesPage().clickOnAdd();
 	}
-
-	@Then("I see {string} message.")
-	public void i_see_message(String sucessmessage) {
+	
+	@Then("I see {string} message")
+	public void i_see_message(String string) {
 		getPayeesPage().payeeAdded();
-	}
-
-	@When("I click add button again")
-	public void i_click_add_button_again() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
 	}
 
 	@When("I see the validation message")
@@ -75,9 +69,10 @@ public class PayeeSteps extends DriverUtil {
 	public void i_click_on_the_name_header() {
 		getPayeesPage().clickNameHeader();
 	}
-//	@After
-//	public void tearDown(){
-//		exit();
-//	}
+	
+	@After
+	public void tearDown(){
+		exit();
+	}
 
 }

@@ -22,7 +22,6 @@ Feature: Test Scenarios for Payment
     Given I launch bnz home page second
     When I click on MenuButton second
 
-  @run
   Scenario Outline: Navigate to Payments Page
     When I Navigate to PaymentsPage
     And I click on <From Account>
@@ -33,8 +32,7 @@ Feature: Test Scenarios for Payment
     Then I verify Transaction
 
     Examples: 
-      | From Account | To Account | value |
-      | Everyday     | Bills      |   500 |
-      | Everyday     | Bills      |   200.50 |
-      | Everyday     | Bills      |   400 |
-
+      | From Account | To Account | value  |
+      | Everyday     | Bills      |    500 |
+      | Everyday     | Bills      | 200.50 |
+      | Everyday     | Bills      |    400 |

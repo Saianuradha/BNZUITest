@@ -7,7 +7,9 @@ import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
@@ -48,11 +50,30 @@ public class PayeesPage {
 
 	@FindBy(xpath = "//ul[@class='List List--border']")
 	private WebElement ulWebElement;
+	
+	@FindBy(xpath = "//span[text()='Payee added']")
+	private WebElement payeeAddedSuccessMessage;
 
-	public void verifyPageTitle() {
-		// TODO
+	public void verifyPageTitle(WebDriver driver) {
+		 JavascriptExecutor j = (JavascriptExecutor) driver;
+	      j.executeScript("return document.readyState")
+	      .toString().equals("complete");
+	      String currentUrl = driver.getCurrentUrl();
+	      String payeeUrlExpected = "https://www.demo.bnz.co.nz/client/payees";
+	     
+	      assertTrue(currentUrl.equals(payeeUrlExpected), "Payee page did not load");
 	}
-
+	
+	public void payeeAdded() {
+		try {
+			// TODO remove thread.sleep
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		assertTrue(payeeAddedSuccessMessage.isDisplayed() == true, "Payee added success message is not displayed");
+	}
+	
 	public void addPayee() {
 		addPayee.click();
 	}
@@ -70,10 +91,6 @@ public class PayeesPage {
 
 	public void clickOnAdd() {
 		addbutton.click();
-
-	}
-
-	public void payeeAdded() {
 
 	}
 

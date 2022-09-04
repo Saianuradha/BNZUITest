@@ -2,6 +2,7 @@ package steps;
 
 import static org.testng.Assert.assertTrue;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -68,4 +69,8 @@ public class PaymentsSteps extends DriverUtil {
 		
 	}
 
+	@After
+	public void tearDown(){
+		exit();
+	}
 }

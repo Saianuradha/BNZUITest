@@ -8,7 +8,6 @@ import io.cucumber.testng.CucumberOptions;
 		features = "feature"
 		,glue={"steps"}
 		,plugin = {"pretty", "html:target/Destination"}
-		, tags = "@run"
 		)
 public class TestRunner extends AbstractTestNGCucumberTests{
 }
