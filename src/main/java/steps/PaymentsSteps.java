@@ -4,14 +4,10 @@ import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.WebDriver;
 
-import io.cucumber.java.After;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
-import pages.PayeesPage;
 import pages.PaymentsPage;
-import utils.DriverUtil;
 
 public class PaymentsSteps {
 	private Double amountTransfering;

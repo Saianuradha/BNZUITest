@@ -2,14 +2,12 @@ package steps;
 
 import org.openqa.selenium.WebDriver;
 
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.PayeesPage;
-import utils.DriverUtil;
 
 public class PayeeSteps {
 	
