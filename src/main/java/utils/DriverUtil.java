@@ -22,9 +22,6 @@ public class DriverUtil {
 		initDriver(Utilities.getConfigValue("browser"));
 
 		driver.manage().window().maximize();
-		// TODO remove this line
-//		driver.manage().timeouts().implicitlyWait(Long.parseLong(Utilities.getConfigValue("loadingTime")),
-//				TimeUnit.SECONDS);
 		driver.manage().timeouts()
 				.implicitlyWait(Duration.ofSeconds(Long.parseLong(Utilities.getConfigValue("loadingTime"))));
 
@@ -56,7 +53,9 @@ public class DriverUtil {
 	}
 
 	public void exit() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 	public WebDriver getDriver() {
